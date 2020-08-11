@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>周凡 I Love</title>
+<style>
+body {
+	overflow:hidden;
+}
+div {
+	width:100px;
+	height:100px;
+	background:#E88D8D;
+	position:absolute;
+	top:50vh;
+	left:50vw;
+	margin-left:-50px;
+	transform:rotate(45deg);
+	border-radius:20px;
+	transition:all ease  1s;
+}
+div::before {
+	content:'';
+	width:100px;
+	height:100px;
+	position:absolute;
+	left:-38px;
+	top:1px;
+	border-radius:50%;
+	background:#E88D8D;
+	transition:all ease  1s;
+}
+div::after {
+	content:'';
+	width:100px;
+	height:100px;
+	position:absolute;
+	right:-1px;
+	top:-40px;
+	border-radius:50%;
+	background:#E88D8D;
+	transition:all ease  1s;
+}
+.scla {
+	transform:rotate(45deg) scale(20);
+	opacity:0.4
+}
+h1 {
+	opacity:0;
+	position:absolute;
+	top:50vh;
+	left:50vw;
+	margin-left:-100px;
+	transition:all ease 1s;
+	color:white;
+	font-weight:700;
+}
+
+h1::before {
+	content:'周凡🐷';
+	position:absolute;
+	margin-top:-50px;
+	margin-left:-10px;
+}
+.show {
+	opacity:1;
+}
+.d2 {
+	z-index:-1;
+	opacity:0.2;
+	animation:my 1s infinite linear;
+}
+@keyframes my {
+	0% {
+	transform:scale(1) rotate(45deg);
+	opacity:1;
+}
+100% {
+	transform:scale(1.65) rotate(45deg);
+	opacity:0
+}
+}</style>
+</head>
+<body>
+<div>
+</div>
+<h1>I Love You</h1>
+<h2></h2>
+<div class="d2">
+</div>
+
+<script>
+window.onload = function(argument) {
+    var div = document.getElementsByTagName('div')[0];
+    var a = false
+    div.onclick = function(argument) {
+        if (a = !a) {
+            div.classList.add("scla");
+            document.getElementsByTagName('h1')[0].classList.add('show');
+            document.getElementsByTagName("div")[1].style.display = "none";
+        } else {
+            div.classList.remove("scla");
+            document.getElementsByTagName('h1')[0].classList.remove('show');
+            document.getElementsByTagName("div")[1].style.display = "block"
+        }
+    }
+    
+    var date1= '2020/02/23 00:00:00';  //开始时间  
+    var date2 = new Date();    //结束时间  
+    var date3 = date2.getTime() - new Date(date1).getTime();   //时间差的毫秒数
+    //计算出相差天数  
+    var days=Math.floor(date3/(24*3600*1000))
+    document.getElementsByTagName('h2')[0].innerHTML = "第"+days+"天";
+}
+</script>
+
+</body>
+</html>
